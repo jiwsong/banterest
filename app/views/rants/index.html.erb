@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Description</th>
       <th>User</th>
     </tr>
@@ -11,6 +12,7 @@
   <tbody>
     <% @rants.each do |rant| %>
       <tr>
+        <td><%= image_tag rant.image.url(:thumb) %></td>
         <td><%= rant.description %></td>
         <td><%= rant.user.email if rant.user %></td>
         <td><%= link_to 'Show', rant %></td>

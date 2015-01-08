@@ -49,6 +49,6 @@ class RantsController < ApplicationController
     end
 
     def rant_params
-      params.require(:rant).permit(:description)
+      params.require(:rant).permit(:description, :image)
     end
 end
