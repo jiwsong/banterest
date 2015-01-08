@@ -1,5 +1,7 @@
 class RantsController < ApplicationController
   before_action :set_rant, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   respond_to :html
 
@@ -13,7 +15,7 @@ class RantsController < ApplicationController
   end
 
   def new
-    @rant = Rant.new
+    @rant = current_user.rants.build
     respond_with(@rant)
   end
 
@@ -21,7 +23,7 @@ class RantsController < ApplicationController
   end
 
   def create
-    @rant = Rant.new(rant_params)
+    @rant = current_user.rants.build(rant_params)
     @rant.save
     respond_with(@rant)
   end
@@ -39,6 +41,11 @@ class RantsController < ApplicationController
   private
     def set_rant
       @rant = Rant.find(params[:id])
+    end
+
+    def correct_user
+      @rant = current_user.rants.find_by(id: params[:id])
+      redirect_to rants_path, notice: "Not authorized to edit this rant" if @rant.nil?
     end
 
     def rant_params
