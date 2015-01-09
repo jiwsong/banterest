@@ -1,11 +1,24 @@
-<%= image_tag @rant.image.url(:medium) %>
+<%= link_to 'Back', rants_path %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @rant.description %>
-</p>
+<div class="row">
+	<div class="col-md-offset-2 col-md-8">
+		<div class="panel panel-default">
+			<div class="panel-heading center">
+				<%= image_tag @rant.image.url(:medium) %>
+			</div>
+			<div class="panel-body">
+				<p>
+				  <strong><%= @rant.description %></strong>
+				</p>
+				<p>
+				  <%= @rant.user.email if @rant.user %>
+				</p>
 
-<% if @rant.user == current_user %>
-	<%= link_to 'Edit', edit_rant_path(@rant) %> |
-<% end %>
-	<%= link_to 'Back', rants_path %>
+				<% if @rant.user == current_user %>
+					<%= link_to 'Edit', edit_rant_path(@rant) %>
+				 | <%= link_to 'Delete', @rant, method: :delete, data: { confirm: 'Are you sure?' } %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
