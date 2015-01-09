@@ -1,30 +1,20 @@
-<h1>Listing rants</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Description</th>
-      <th>User</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @rants.each do |rant| %>
-      <tr>
-        <td><%= image_tag rant.image.url(:thumb) %></td>
-        <td><%= rant.description %></td>
-        <td><%= rant.user.email if rant.user %></td>
-        <td><%= link_to 'Show', rant %></td>
+<div id="rants", class="transitions-enabled">
+  <% @rants.each do |rant| %>
+    <div class="box panel panel-default">
+      <%= image_tag rant.image.url(:thumb) %>
+      <div class="panel-body">
+        <%= rant.description %>
+        <%= rant.user.email if rant.user %>
+        <br>
+        <%= link_to 'Show', rant %>
         <% if rant.user == current_user %>
-          <td><%= link_to 'Edit', edit_rant_path(rant) %></td>
-          <td><%= link_to 'Destroy', rant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Rant', new_rant_path %>
+          | <%= link_to 'Edit', edit_rant_path(rant) %>
+          | <%= link_to 'Destroy', rant, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<!-- <br>
+<%= link_to 'New Rant', new_rant_path, class: "btn btn-primary" %>
+-->
