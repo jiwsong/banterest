@@ -14,8 +14,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path%></li>
-        <li><%= link_to "About Us", about_path%></li>
+        <li><%= link_to root_path  do %>
+            <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+          <%end%></li>
+        <li><%= link_to about_path  do %>
+            <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Home
+          <%end%></li>  
         <% if user_signed_in? %>
           <li><%= link_to new_rant_path  do %>
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Rant
