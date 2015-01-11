@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :rants
 
   devise_for :users
-  root "pages#home"
+  root "rants#index"
   get "about" => "pages#about"
 
   # The priority is based upon order of creation: first created -> highest priority.

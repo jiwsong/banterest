@@ -1,4 +1,9 @@
-<%= link_to 'Back', rants_path %>
+
+<%= link_to rants_path  do %>
+	<div class="btn btn-default">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+	</div>
+<%end%>
 
 <div class="row">
 	<div class="col-md-offset-2 col-md-8">
@@ -15,8 +20,13 @@
 				</p>
 
 				<% if @rant.user == current_user %>
-					<%= link_to 'Edit', edit_rant_path(@rant) %>
-				 | <%= link_to 'Delete', @rant, method: :delete, data: { confirm: 'Are you sure?' } %>
+					<%= link_to edit_rant_path(@rant)  do %>
+		              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
+		            <%end%>
+		            | 
+		            <%= link_to @rant, method: :delete, data: { confirm: 'Are you sure?' } do %>
+		              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
+		            <% end %>
 				<% end %>
 			</div>
 		</div>

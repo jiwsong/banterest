@@ -1,6 +1,18 @@
-<h1>Editing rant</h1>
+<%= link_to rants_path  do %>
+	<div class="btn btn-default">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+	</div>
+<%end%>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @rant %> |
-<%= link_to 'Back', rants_path %>
+<div class="row">
+	<div class="col-md-offset-2 col-md-8">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2> Edit Rant </h2>
+			</div>
+			<div class="panel-body">
+				<%= render 'form' %>
+			</div>
+		</div>
+	</div>
+</div>
