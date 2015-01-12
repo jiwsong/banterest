@@ -6,7 +6,7 @@ class RantsController < ApplicationController
   respond_to :html
 
   def index
-    @rants = Rant.all.order(created_at: :desc)
+    @rants = Rant.all.order(created_at: :desc).paginate(:page => params[:page], :per_page => 8 )
     respond_with(@rants)
   end
 
