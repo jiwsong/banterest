@@ -6,7 +6,7 @@ class RantsController < ApplicationController
   respond_to :html
 
   def index
-    @rants = Rant.all
+    @rants = Rant.all.order(created_at: :desc)
     respond_with(@rants)
   end
 
