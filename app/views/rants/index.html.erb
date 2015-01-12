@@ -2,13 +2,11 @@
 
 <div id="rants", class="transitions-enabled">
   <% @rants.each do |rant| %>
-    <div class="box panel panel-default center">
+    <div class="box panel panel-default">
       <%= link_to image_tag(rant.image.url(:thumb)), rant %>
-      <div class="panel-body">
-        <%= rant.description %>
-        <br>
-        <%= rant.user.email if rant.user %>
-        <br>
+      <div class="panel-body center">
+        <strong><%= rant.description %></strong><br>
+        <%= rant.user.name if rant.user %><br>
         <% if rant.user == current_user %>
           <div class="actions">
             <%= link_to edit_rant_path(rant)  do %>
@@ -23,7 +21,8 @@
       </div>
     </div>
   <% end %>
-</div>
+</div> 
+
 <div class="center">
   <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 </div>

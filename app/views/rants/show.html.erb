@@ -16,7 +16,7 @@
 				  <strong><%= @rant.description %></strong>
 				</p>
 				<p>
-				  <%= @rant.user.email if @rant.user %>
+				  <%= @rant.user.name if @rant.user %>
 				</p>
 
 				<% if @rant.user == current_user %>
